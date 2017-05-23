@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by RENT on 2017-05-19.
  */
-public class Customers {
+public class Customers implements CsvObject{
     public static final String DATE_PATTERN = "yyyy-MM-dd";
     public static final String CSV_SEPARATOR = ",";
     private static int nextId = 0;
@@ -63,6 +63,18 @@ public class Customers {
         stringBuilder.append(formatDate);
 
         return stringBuilder.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Customers{" +
+                "id=" + id +
+                ", pesel='" + pesel + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", city='" + city + '\'' +
+                ", date=" + date +
+                '}';
     }
 
     public int getId() {
