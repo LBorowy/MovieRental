@@ -40,6 +40,14 @@ public class Rental implements CsvObject {
         return stringBuilder.toString();
     }
 
+    @Override
+    public String toString() {
+        return "Rental: " +
+                "customerId: " + customerId +
+                ", movieId: " + movieId +
+                ", date: " + date;
+    }
+
     public Rental(int customerId, int movieId) {
         this.customerId = customerId;
         this.movieId = movieId;

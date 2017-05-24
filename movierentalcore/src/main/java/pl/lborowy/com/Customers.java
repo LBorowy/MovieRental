@@ -24,6 +24,9 @@ public class Customers implements CsvObject{
         String[] split = text.split(CSV_SEPARATOR);
 
         this.id = Integer.parseInt(split[0]);
+        if (nextId < this.id +1) {
+            nextId = nextId + 1;
+        }
         this.pesel = split[1];
         this.firstName = split[2];
         this.lastName = split[3];
@@ -43,6 +46,10 @@ public class Customers implements CsvObject{
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
+    }
+
+    public static void setNextId(int nextId) {
+        Customers.nextId = nextId;
     }
 
     public String toCSVString() {
@@ -67,14 +74,13 @@ public class Customers implements CsvObject{
 
     @Override
     public String toString() {
-        return "Customers{" +
-                "id=" + id +
-                ", pesel='" + pesel + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", city='" + city + '\'' +
-                ", date=" + date +
-                '}';
+        return "Customers: " +
+                "id: " + id +
+                ", pesel: " + pesel  +
+                ", firstName: " + firstName  +
+                ", lastName: " + lastName  +
+                ", city: " + city  +
+                ", date: " + date;
     }
 
     public int getId() {

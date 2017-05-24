@@ -1,5 +1,7 @@
 package pl.lborowy.com;
 
+import java.text.ParseException;
+
 /**
  * Created by RENT on 2017-05-19.
  */
@@ -12,10 +14,14 @@ public class Movie implements CsvObject {
     private String genre;
     private String description;
 
-    public Movie(String text) {
+    // "0,Terminator,action,good"
+    public Movie(String text) throws ParseException{
         String[] split = text.split(CSV_SEPARATOR);
 
         this.id = Integer.parseInt(split[0]);
+        if (nextId < this.id +1) {
+            nextId = nextId + 1;
+        }
         this.title = split[1];
         this.genre = split[2];
         this.description = split[3];
@@ -48,12 +54,11 @@ public class Movie implements CsvObject {
 
     @Override
     public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return "Movie: " +
+                "id: " + id +
+                ", title: " + title +
+                ", genre: " + genre +
+                ", description: " + description;
     }
 
     public int getId() {

@@ -12,6 +12,13 @@
 
     <name>movierentalgui</name>
     <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>pl.lborowy.com</groupId>
+            <artifactId>movierentalcore</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

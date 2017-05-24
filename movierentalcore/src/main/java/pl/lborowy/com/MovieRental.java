@@ -41,6 +41,12 @@ public class MovieRental {
             this.customers = new ArrayList<>(); // wyrzuci nową pustą listę
         }
 
+        // inny sposób na ustawienie kolejnego nextId
+        if (!customers.isEmpty()) {
+            int maxId = this.customers.stream().mapToInt(x -> x.getId()).summaryStatistics().getMax();
+            Customers.setNextId(maxId + 1);
+        }
+
         DataFileReader<Movie> movieDataFileReader = new DataFileReader<>(new MovieFactory());
         try {
             this.movies = movieDataFileReader.readFromFile("movies.csv");
