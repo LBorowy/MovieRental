@@ -42,10 +42,7 @@ public class Rental implements CsvObject {
 
     @Override
     public String toString() {
-        return "Rental: " +
-                "customerId: " + customerId +
-                ", movieId: " + movieId +
-                ", date: " + date;
+        return "customerId: " + customerId + ", movieId: " + movieId;
     }
 
     public Rental(int customerId, int movieId) {

@@ -2,6 +2,7 @@ package pl.lborowy.com;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  * Created by RENT on 2017-05-24.
@@ -11,6 +12,7 @@ public class MovieRentalWindow extends JFrame {
     private JList<Customers> customersJList;
     private JList<Movie> movieJList;
     private JList<Rental> rentalsJList;
+
     private MovieRental movieRental;
 
     public static void main(String[] args) {
@@ -19,27 +21,55 @@ public class MovieRentalWindow extends JFrame {
     }
 
     public MovieRentalWindow(MovieRental movieRental) throws HeadlessException {
+        this.movieRental = movieRental;
+
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(600,400);
         setLayout(new FlowLayout());
         setTitle("Wypożyczalnia filmów");
 
-        this.movieRental = movieRental;
-
         customersJList = new JList<>();
-        add(customersJList);
 
-        showCustomers();
+        JScrollPane customerScrollPane = new JScrollPane(customersJList);
+        customerScrollPane.setPreferredSize(new Dimension(300,200));
+        add(customerScrollPane);
 
         movieJList = new JList<>();
         add(movieJList);
 
-        showMovies();
-
         rentalsJList = new JList<>();
         add(rentalsJList);
 
+
+        JButton buttonAddCustomers = new JButton("Dodaj klienta");
+        add(buttonAddCustomers);
+
+        JButton buttonEditCustomers = new JButton("Edytuj klienta");
+        add(buttonEditCustomers);
+
+        MovieRentalWindow movieRentalWindow = this; // dzieki temu moge uzyc movieRentalWindow w buttonAddCustomers
+
+        buttonAddCustomers.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new AddEditCustomerWindow(movieRental, movieRentalWindow, null);
+            }
+        });
+
+        buttonEditCustomers.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Customers selectedCustomer = customersJList.getSelectedValue();
+                if (selectedCustomer == null) {
+                    JOptionPane.showMessageDialog(buttonAddCustomers, "Nie wybrano klienta");
+                }
+                new AddEditCustomerWindow(movieRental, movieRentalWindow, selectedCustomer);
+            }
+        });
+
+        showCustomers();
+        showMovies();
         showRentals();
 
         repaint();

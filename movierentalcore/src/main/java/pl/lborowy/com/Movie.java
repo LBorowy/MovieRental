@@ -54,11 +54,7 @@ public class Movie implements CsvObject {
 
     @Override
     public String toString() {
-        return "Movie: " +
-                "id: " + id +
-                ", title: " + title +
-                ", genre: " + genre +
-                ", description: " + description;
+        return id + ": " + title + ", " + genre + ", " + description;
     }
 
     public int getId() {

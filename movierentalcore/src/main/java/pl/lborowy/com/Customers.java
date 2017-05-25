@@ -74,13 +74,7 @@ public class Customers implements CsvObject{
 
     @Override
     public String toString() {
-        return "Customers: " +
-                "id: " + id +
-                ", pesel: " + pesel  +
-                ", firstName: " + firstName  +
-                ", lastName: " + lastName  +
-                ", city: " + city  +
-                ", date: " + date;
+        return id + ": " + lastName + ", " + firstName + ", " + pesel + ", " + city;
     }
 
     public int getId() {
