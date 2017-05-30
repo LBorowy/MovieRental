@@ -16,7 +16,7 @@ public class MovieRentalTest {
     @Test
     public void addCustomer_correctCase() throws NullCustomerException {
         // given
-        MovieRental movieRental = new MovieRental(); // wypożyczalnia
+        MovieRental movieRental = new MovieRental(false); // wypożyczalnia
         Customers customer = new Customers("123456", "Michał","Szulc", "Wrocław", new Date()); // klient
         // when
         movieRental.addCustomer(customer);
@@ -28,7 +28,7 @@ public class MovieRentalTest {
     @Test(expected = NullCustomerException.class) // oczekuje NullCustomerException
     public void addCustomer_nullCustomer() throws NullCustomerException {
         // given
-        MovieRental movieRental = new MovieRental();
+        MovieRental movieRental = new MovieRental(true);
         Customers customer = null;
         // when
         movieRental.addCustomer(customer);
@@ -37,7 +37,7 @@ public class MovieRentalTest {
     @Test
     public void addMovie_correctCase() throws NullMovieException, MovieAlreadyExistException {
         // given
-        MovieRental movieRental = new MovieRental();
+        MovieRental movieRental = new MovieRental(false);
         Movie movie = new Movie("2F2F", "action", "cars");
         // when
         movieRental.addMovie(movie);
@@ -49,7 +49,7 @@ public class MovieRentalTest {
     @Test(expected = NullMovieException.class) // oczekuje NullMovieException
     public void addMovie_nullCase() throws NullMovieException, MovieAlreadyExistException {
         //given
-        MovieRental movieRental = new MovieRental();
+        MovieRental movieRental = new MovieRental(true);
         Movie movie = null;
         // when
         movieRental.addMovie(movie);
@@ -58,7 +58,7 @@ public class MovieRentalTest {
     @Test(expected = MovieAlreadyExistException.class)
     public void addMovie_duplicate() throws NullMovieException, MovieAlreadyExistException {
         // given
-        MovieRental movieRental = new MovieRental();
+        MovieRental movieRental = new MovieRental(true);
         Movie movie = new Movie("2F2F", "action", "cars");
         // when
         movieRental.addMovie(movie);

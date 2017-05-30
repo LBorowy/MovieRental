@@ -22,12 +22,16 @@ public class MovieRental {
     private List<Rental> rentals;
     private List<Movie> movies;
 
-    public MovieRental() {
-//        this.customers = new ArrayList<>();
+    public MovieRental(boolean shouldReadFromFile) {
+
+        this.customers = new ArrayList<>();
         this.rentals = new ArrayList<>();
         this.movies = new ArrayList<>();
 
-        ReadFromFile();
+
+        if(shouldReadFromFile) {
+            ReadFromFile();
+        }
     }
 
     private void ReadFromFile() {

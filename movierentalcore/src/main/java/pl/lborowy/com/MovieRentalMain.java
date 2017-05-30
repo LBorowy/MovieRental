@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class MovieRentalMain {
     public static void main(String[] args) throws NullCustomerException, NullMovieException, MovieAlreadyExistException {
-        MovieRental movieRental = new MovieRental();
+        MovieRental movieRental = new MovieRental(true);
         movieRental.printAllData();
 
         System.out.println("===== DODAJĘ KLIENTA =====");

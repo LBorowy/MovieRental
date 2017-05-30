@@ -16,6 +16,11 @@ public class AddEditCustomerWindow extends JFrame{
     private Customers customersToEdit;
 
 
+//    public static void main(String[] args) {
+//        new AddEditCustomerWindow(new MovieRental(), null, null);
+//    }
+
+
     public AddEditCustomerWindow(MovieRental movieRental, MovieRentalWindow movieRentalWindow, Customers customerToEdit) throws HeadlessException {
 
         this.movieRental = movieRental;

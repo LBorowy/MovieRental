@@ -16,7 +16,7 @@ public class MovieRentalWindow extends JFrame {
     private MovieRental movieRental;
 
     public static void main(String[] args) {
-        MovieRental movieRental = new MovieRental();
+        MovieRental movieRental = new MovieRental(true);
         new MovieRentalWindow(movieRental);
     }
 
